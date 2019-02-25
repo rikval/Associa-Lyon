@@ -20,6 +20,7 @@ class InitiativeType extends AbstractType
             ->add('siteweb')
             ->add('phone')
             ->add('longitude')
+            ->add('latitude')
         ;
     }
 

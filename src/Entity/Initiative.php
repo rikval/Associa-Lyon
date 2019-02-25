@@ -56,6 +56,11 @@ class Initiative
      */
     private $longitude;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=7)
+     */
+    private $latitude;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +158,18 @@ class Initiative
     public function setLongitude($longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude($latitude): self
+    {
+        $this->latitude = $latitude;
 
         return $this;
     }
