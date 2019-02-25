@@ -8,6 +8,26 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <header class="py-2">
+        <div class="container-fluid bg-dark">
+
+            <h1 class="d-flex justify-content-center text-info">ASSOCIA'LYON</h1>
+            <h6 class="d-flex justify-content-center text-light">Iniatives écologiques, collaboratives et citoyennes sur Lyon et sa région</h6>
+            
+            <nav class="site-header sticky-top py-1">
+                <div class="container d-flex flex-column flex-md-row justify-content-between">        
+                    <a class="nav-link text-info" href="/home">Associa'Lyon</a>
+                    <a class="nav-link text-info" href="/initiative">Trouver une initiative</a>
+                    <a class="nav-link text-info" href="#">Agir, proposer, collaborer...</a>
+                    <a class="nav-link text-info" href="#">Près de chez vous</a>
+                    <a class="nav-link text-info" href="/login">Connexion</a>
+                    <a class="nav-link text-info" href="/logout">Déconnexion</a>
+                    <a class="nav-link text-info" href="/register">S'enregistrer</a>
+                </div>
+            </nav>
+
+            </div>
+        </header>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Initiative{% endblock %}
+
+{% block body %}
+    <h1>Initiative</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ initiative.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ initiative.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ initiative.description }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ initiative.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ initiative.zip }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ initiative.ville }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ initiative.siteweb }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ initiative.phone }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ initiative.longitude }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('initiative_index') }}">back to list</a>
+
+    <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">edit</a>
+
+    {{ include('initiative/_delete_form.html.twig') }}
+{% endblock %}

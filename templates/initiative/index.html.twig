@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Initiative index{% endblock %}
+
+{% block body %}
+    <h1>Initiative index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Adresse</th>
+                <th>Zip</th>
+                <th>Ville</th>
+                <th>Siteweb</th>
+                <th>Phone</th>
+                <th>Longitude</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for initiative in initiatives %}
+            <tr>
+                <td>{{ initiative.id }}</td>
+                <td>{{ initiative.titre }}</td>
+                <td>{{ initiative.description }}</td>
+                <td>{{ initiative.adresse }}</td>
+                <td>{{ initiative.zip }}</td>
+                <td>{{ initiative.ville }}</td>
+                <td>{{ initiative.siteweb }}</td>
+                <td>{{ initiative.phone }}</td>
+                <td>{{ initiative.longitude }}</td>
+                <td>
+                    <a href="{{ path('initiative_show', {'id': initiative.id}) }}">show</a>
+                    <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('initiative_new') }}">Create new</a>
+{% endblock %}
