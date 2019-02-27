@@ -1,7 +1,14 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <div id="locationField">
-        <input id="autocomplete" placeholder="Votre adresse" onFocus="geolocate()" type="text" />
-    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+<div id="locationField">
+    <input id="autocomplete" placeholder="Votre adresse" onFocus="geolocate()" type="text" />
+</div>
+
+
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('/dist/js/autocomplete.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD098T9MESiCa4Dnm21lZBKvlbfYk1sVFc&libraries=places&callback=initAutocomplete" async defer></script>
+{% endblock %}
