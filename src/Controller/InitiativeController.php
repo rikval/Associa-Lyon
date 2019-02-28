@@ -64,6 +64,7 @@ class InitiativeController extends AbstractController
     {
         return $this->render('initiative/show.html.twig', [
             'initiative' => $initiative,
+            'user' => $this->getUser()
         ]);
     }
 
