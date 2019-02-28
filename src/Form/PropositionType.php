@@ -6,6 +6,8 @@ use App\Entity\Proposition;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Categorie;
 
 class PropositionType extends AbstractType
 {
@@ -14,9 +16,10 @@ class PropositionType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
-            ->add('created_at')
-            ->add('user')
-            ->add('categorie')
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
+                'choice_label' => 'titre'
+            ]);
         ;
     }
 

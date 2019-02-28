@@ -24,7 +24,9 @@
                 <td>{{ proposition.createdAt ? proposition.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('proposition_show', {'id': proposition.id}) }}">show</a>
+                    {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
                     <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

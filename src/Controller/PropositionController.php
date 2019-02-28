@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/proposition")
@@ -22,10 +23,12 @@ class PropositionController extends AbstractController
     {
         return $this->render('proposition/index.html.twig', [
             'propositions' => $propositionRepository->findAll(),
+            'user' => $this->getUser()
         ]);
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="proposition_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -33,6 +36,8 @@ class PropositionController extends AbstractController
         $proposition = new Proposition();
         $form = $this->createForm(PropositionType::class, $proposition);
         $form->handleRequest($request);
+
+        $proposition->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -55,14 +60,19 @@ class PropositionController extends AbstractController
     {
         return $this->render('proposition/show.html.twig', [
             'proposition' => $proposition,
+            'user' => $this->getUser()
         ]);
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}/edit", name="proposition_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Proposition $proposition): Response
     {
+        if ($this->getUser()->getId() !== $proposition->getUser()->getId()) {
+            return new Response('pas auth');
+        }
         $form = $this->createForm(PropositionType::class, $proposition);
         $form->handleRequest($request);
 
@@ -81,10 +91,15 @@ class PropositionController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="proposition_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Proposition $proposition): Response
     {
+        if ($this->getUser()->getId() !== $proposition->getUser()->getId()) {
+            return new Response('pas auth');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$proposition->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($proposition);

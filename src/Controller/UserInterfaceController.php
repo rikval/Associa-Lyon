@@ -20,9 +20,12 @@ class UserInterfaceController extends AbstractController
     {
 
         $initiatives = $this->getUser()->getInitiatives();
+
+        $propositions = $this->getUser()->getPropositions();
         
         return $this->render('userui/userui.html.twig', [
             'initiatives' => $initiatives,
+            'propositions' => $propositions,
             'user' => $this->getUser()
         ]);
     }
