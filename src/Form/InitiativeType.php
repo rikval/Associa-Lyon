@@ -6,6 +6,9 @@ use App\Entity\Initiative;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Categorie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 class InitiativeType extends AbstractType
 {
@@ -21,6 +24,10 @@ class InitiativeType extends AbstractType
             ->add('phone')
             ->add('longitude')
             ->add('latitude')
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
+                'choice_label' => 'titre'
+            ]);
         ;
     }
 

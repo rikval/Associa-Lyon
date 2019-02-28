@@ -41,6 +41,8 @@ class InitiativeController extends AbstractController
         $form = $this->createForm(InitiativeType::class, $initiative);
         $form->handleRequest($request);
 
+        $initiative->setUser($this->getUser());
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($initiative);
