@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -44,6 +46,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $surname;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Initiative", mappedBy="user", orphanRemoval=true)
+     */
+    private $initiatives;
+
+    public function __construct()
+    {
+        $this->initiatives = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -143,6 +155,37 @@ class User implements UserInterface
     public function setSurname(?string $surname): self
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Initiative[]
+     */
+    public function getInitiatives(): Collection
+    {
+        return $this->initiatives;
+    }
+
+    public function addInitiative(Initiative $initiative): self
+    {
+        if (!$this->initiatives->contains($initiative)) {
+            $this->initiatives[] = $initiative;
+            $initiative->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInitiative(Initiative $initiative): self
+    {
+        if ($this->initiatives->contains($initiative)) {
+            $this->initiatives->removeElement($initiative);
+            // set the owning side to null (unless already changed)
+            if ($initiative->getUser() === $this) {
+                $initiative->setUser(null);
+            }
+        }
 
         return $this;
     }

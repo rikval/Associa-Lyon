@@ -13,7 +13,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 /**
- * @IsGranted("ROLE_USER")
  * @Route("/initiative")
  */
 class InitiativeController extends AbstractController
@@ -23,12 +22,17 @@ class InitiativeController extends AbstractController
      */
     public function index(InitiativeRepository $initiativeRepository): Response
     {
+
+        $initiatives = $initiativeRepository->findAll();
+        
         return $this->render('initiative/index.html.twig', [
-            'initiatives' => $initiativeRepository->findAll(),
+            'initiatives' => $initiatives,
+            'user' => $this->getUser()
         ]);
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="initiative_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -62,10 +66,14 @@ class InitiativeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}/edit", name="initiative_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Initiative $initiative): Response
     {
+        if ($this->getUser()->getId() !== $initiative->getUser()->getId()) {
+            return new Response('pas auth');
+        }
         $form = $this->createForm(InitiativeType::class, $initiative);
         $form->handleRequest($request);
 
@@ -84,10 +92,15 @@ class InitiativeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="initiative_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Initiative $initiative): Response
     {
+        if ($this->getUser()->getId() !== $initiative->getUser()->getId()) {
+            return new Response('pas auth');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$initiative->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($initiative);

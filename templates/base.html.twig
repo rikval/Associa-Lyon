@@ -24,10 +24,11 @@
                         <a class="nav-link text-info" href="#">Agir, proposer, collaborer...</a>
                         <a class="nav-link text-info" href="/map">Près de chez vous</a>
                     {% if is_granted('ROLE_USER') %}
+                        <a class="nav-link text-info" href="/userui">Mon Espace</a>
                         <a class="nav-link text-info" href="/logout">Déconnexion</a>
                     {% else %}
-                        <a class="nav-link text-info" href="/login">Connexion</a>
                         <a class="nav-link text-info" href="/register">S'enregistrer</a>
+                        <a class="nav-link text-info" href="/login">Connexion</a>
                     {% endif %}
                 </div>
             </nav>
