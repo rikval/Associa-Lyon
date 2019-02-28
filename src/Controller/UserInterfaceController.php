@@ -23,6 +23,7 @@ class UserInterfaceController extends AbstractController
         
         return $this->render('userui/userui.html.twig', [
             'initiatives' => $initiatives,
+            'user' => $this->getUser()
         ]);
     }
 

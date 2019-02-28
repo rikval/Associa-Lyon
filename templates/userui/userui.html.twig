@@ -6,7 +6,52 @@
 
 <h4>Mes initiatives</h4>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Adresse</th>
+            <th>Zip</th>
+            <th>Ville</th>
+            <th>Siteweb</th>
+            <th>Phone</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for initiative in initiatives %}
+        <tr>
+            <td>{{ initiative.id }}</td>
+            <td>{{ initiative.titre }}</td>
+            <td>{{ initiative.description }}</td>
+            <td>{{ initiative.adresse }}</td>
+            <td>{{ initiative.zip }}</td>
+            <td>{{ initiative.ville }}</td>
+            <td>{{ initiative.siteweb }}</td>
+            <td>{{ initiative.phone }}</td>
+            <td>{{ initiative.longitude }}</td>
+            <td>{{ initiative.latitude }}</td>
+            <td>
+                <a href="{{ path('initiative_show', {'id': initiative.id}) }}">show</a>
+
+                {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
+                <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">edit</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="11">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 <a href="{{ path('initiative_new') }}">Nouvelle initiative</a>
 
-
+<h4>Mes Propositions</h4>
 {% endblock %}
