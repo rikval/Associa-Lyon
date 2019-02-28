@@ -36,7 +36,10 @@
                 <td>{{ initiative.latitude }}</td>
                 <td>
                     <a href="{{ path('initiative_show', {'id': initiative.id}) }}">show</a>
+
+                    {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
                     <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

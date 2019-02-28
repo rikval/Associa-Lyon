@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -38,12 +40,28 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $name;
+    private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $surname;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Initiative", mappedBy="user", orphanRemoval=true)
+     */
+    private $initiatives;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Proposition", mappedBy="user", orphanRemoval=true)
+     */
+    private $propositions;
+
+    public function __construct()
+    {
+        $this->initiatives = new ArrayCollection();
+        $this->propositions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,14 +141,14 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getName(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->name;
+        return $this->firstname;
     }
 
-    public function setName(?string $name): self
+    public function setFirstname(?string $firstname): self
     {
-        $this->name = $name;
+        $this->firstname = $firstname;
 
         return $this;
     }
@@ -143,6 +161,68 @@ class User implements UserInterface
     public function setSurname(?string $surname): self
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Initiative[]
+     */
+    public function getInitiatives(): Collection
+    {
+        return $this->initiatives;
+    }
+
+    public function addInitiative(Initiative $initiative): self
+    {
+        if (!$this->initiatives->contains($initiative)) {
+            $this->initiatives[] = $initiative;
+            $initiative->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInitiative(Initiative $initiative): self
+    {
+        if ($this->initiatives->contains($initiative)) {
+            $this->initiatives->removeElement($initiative);
+            // set the owning side to null (unless already changed)
+            if ($initiative->getUser() === $this) {
+                $initiative->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Proposition[]
+     */
+    public function getPropositions(): Collection
+    {
+        return $this->propositions;
+    }
+
+    public function addProposition(Proposition $proposition): self
+    {
+        if (!$this->propositions->contains($proposition)) {
+            $this->propositions[] = $proposition;
+            $proposition->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposition(Proposition $proposition): self
+    {
+        if ($this->propositions->contains($proposition)) {
+            $this->propositions->removeElement($proposition);
+            // set the owning side to null (unless already changed)
+            if ($proposition->getUser() === $this) {
+                $proposition->setUser(null);
+            }
+        }
 
         return $this;
     }

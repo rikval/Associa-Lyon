@@ -33,9 +33,15 @@ class Categorie
      */
     private $initiative;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Proposition", mappedBy="categorie", orphanRemoval=true)
+     */
+    private $propositions;
+
     public function __construct()
     {
         $this->initiative = new ArrayCollection();
+        $this->propositions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,37 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($initiative->getCategorie() === $this) {
                 $initiative->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Proposition[]
+     */
+    public function getPropositions(): Collection
+    {
+        return $this->propositions;
+    }
+
+    public function addProposition(Proposition $proposition): self
+    {
+        if (!$this->propositions->contains($proposition)) {
+            $this->propositions[] = $proposition;
+            $proposition->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposition(Proposition $proposition): self
+    {
+        if ($this->propositions->contains($proposition)) {
+            $this->propositions->removeElement($proposition);
+            // set the owning side to null (unless already changed)
+            if ($proposition->getCategorie() === $this) {
+                $proposition->setCategorie(null);
             }
         }
 

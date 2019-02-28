@@ -2,28 +2,20 @@
 
 namespace App\Form;
 
-use App\Entity\Initiative;
+use App\Entity\Proposition;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Categorie;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Categorie;
 
-
-class InitiativeType extends AbstractType
+class PropositionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('titre')
             ->add('description')
-            ->add('adresse')
-            ->add('zip')
-            ->add('ville')
-            ->add('siteweb')
-            ->add('phone')
-            ->add('longitude')
-            ->add('latitude')
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'titre'
@@ -34,7 +26,7 @@ class InitiativeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Initiative::class,
+            'data_class' => Proposition::class,
         ]);
     }
 }
