@@ -39,7 +39,7 @@ a:hover {
 #cover {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-image: url('../img/image_terre.jpg');
+    background-image: url('../img/header/image_terre.jpg');
     background-size: cover;
     color: #fff
 }
