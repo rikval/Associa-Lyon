@@ -1,3 +1,7 @@
+/*Polices et Couleurs*/
+
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Merienda');
+
 body,
 html {
     margin: 0px;
@@ -6,7 +10,7 @@ html {
     height: 100%;
     color: rgb(46, 71, 27);
     background-color: rgb(216, 214, 207);
-    font-family: 'Comic Sans MS', cursive;
+    font-family: 'Merienda', cursive;
 }
 
 * {
@@ -26,9 +30,9 @@ img {
 
 a,
 a:hover {
-    text-decoration: none;
-    color: rgb(216, 214, 207);
-    font-size: 20px;
+     text-decoration: none;
+     color: #222;
+     font-size: 20px;
 }
 
 
@@ -58,4 +62,55 @@ a:hover {
 #cover p {
     color: rgb(216, 207, 207);
     text-shadow: 0 0 10px #222;
+}
+
+/* Footer */
+
+#footer {
+    background: inherit;
+    color: #222
+}
+
+#footer li {
+    color: #222;
+}
+
+#footer ul,
+#footer li {
+    display: block;
+}
+
+#footer h3,
+#footer h4 {
+    color: #222
+}
+
+#footer h4 {
+    font-size: 1.em
+}
+
+#footer input[type="text"],
+#footer input[type="email"] {
+    outline: 0;
+    background-color: #222;
+    background: #fff;
+    display: block;
+    padding: 8px 10px;
+    border: 1px solid #222;
+}
+
+#footer input[type="submit"] {
+    background: 0;
+    border-radius: 0;
+    border: 1px solid #222;
+    color: #fff;
+    padding: 10px 20px;
+    outline: 0;
+}
+
+#footer .error {
+    background: #222;
+    color: #fff;
+    border: 1px solid #222;
+    display: none;
 }
