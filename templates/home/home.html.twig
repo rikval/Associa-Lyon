@@ -3,7 +3,7 @@
 {% block body %}
 
 <main>
-<div class="container-fluid py-5">
+{# <div class="container-fluid py-5">
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -34,19 +34,19 @@
             </div>
         </div>
     </div>
-</div>
+</div> #}
         
 <div class="container py-2">
 
     <div class="row">
         <div class="col-3">
-            <h4>Initiatives en cours</h4>
+            <h4><strong>Initiatives en cours</strong></h4>
             <hr>
             <h5 class="mt-4">Association</h5>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
                 quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
                 cupiditate similique debitis. </p>
-            <a href="#" class="btn btn-info">Contact et Renseignements</a>
+            <a class="btn btn-outline-info" href="#">Contact et Renseignements</a>
             <hr>
 
             <h5>Association</h5>
@@ -63,8 +63,10 @@
             <a href="#" class="btn btn-info">Contact et Renseignements</a>
             <hr>
 
-            <a class="twitter-timeline" data-width="220" data-tweet-limit="2" data-theme="dark" data-link-color="#E81C4F"
-                href="https://twitter.com/Anciela?ref_src=twsrc%5Etfw">Tweets by Anciela</a>
+            
+            <a class="twitter-timeline" data-link-color="#E81C4F" data-theme="light" data-tweet-limit="2" data-width="220" 
+            href="https://twitter.com/Anciela?ref_src=twsrc%5Etfw">Tweets by Anciela</a>
+
 
 
         </div>
@@ -81,12 +83,12 @@
                 <div class="col-4 mt-5">
                     <div class="card" style="width: 17rem; height: 26rem;">
                         <img src="dist/img/categorie/amap.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Amap</h5>
+                        <div class="card-body" id="amap">
+                            <h5 class="card-title"><strong>Amap</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
                                 bulk of the card's
                                 content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
@@ -94,12 +96,12 @@
                 <div class="col-4 mt-5">
                     <div class="card" style="width: 17rem; height: 26rem;  ">
                         <img src="dist/img/categorie/reparation_velo.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Réparation de vélos</h5>
+                        <div class="card-body" id="velo">
+                            <h5 class="card-title"><strong>Réparation de vélos</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
                                 bulk of the card's
                                 content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
@@ -108,12 +110,12 @@
                 <div class="col-4 mt-5">
                     <div class="card" style="width: 17rem; height: 26rem; ">
                         <img src="dist/img/categorie/cafe.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cafés associatifs</h5>
+                        <div class="card-body" id="cafe">
+                            <h5 class="card-title"><strong>Cafés associatifs</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
                                 bulk of the card's
                                 content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
@@ -121,12 +123,12 @@
                 <div class="col-4 mt-4">
                     <div class="card" style="width: 17rem; height: 26rem; ">
                         <img src="dist/img/categorie/cigale.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cigales</h5>
+                        <div class="card-body" id="cigales">
+                            <h5 class="card-title"><strong>Cigales</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
                                 bulk of the card's
                                 content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
@@ -135,25 +137,24 @@
                 <div class="col-4 mt-4">
                     <div class="card" style="width: 17rem; height: 26rem; ">
                         <img src="dist/img/categorie/composteur.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Composteurs</h5>
+                        <div class="card-body" id="compost">
+                            <h5 class="card-title"><strong>Composteurs</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                                </p>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-4 mt-4">
-                    <div class="card" style="width: 17rem; height: 26rem; ">
+                    <div class="card" style="width: 17rem; height: 26rem;">
                         <img src="dist/img/categorie/jardin.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Jardins partagés</h5>
+                        <div class="card-body" id="jardin">
+                            <h5 class="card-title"><strong>Jardins partagés</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
                                 bulk of the card's
                                 content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
@@ -162,12 +163,12 @@
                 <div class="col-4 mt-4">
                     <div class="card" style="width: 17rem; height: 26rem; ">
                         <img src="dist/img/categorie/echanges_locaux.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Echanges locaux</h5>
+                        <div class="card-body" id="echanges">
+                            <h5 class="card-title"><strong>Echanges locaux</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
                                 bulk of the card's
                                 content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
@@ -175,18 +176,18 @@
                 <div class="col-4 mt-4">
                     <div class="card" style="width: 17rem; height: 26rem; ">
                         <img src="dist/img/categorie/boite_partage.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Boîte à partage entre voisins</h5>
+                        <div class="card-body" id="boite">
+                            <h5 class="card-title"><strong>Boîte à partage entre voisins</strong></h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                                bulk</p>
+                            <a href="#" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
                 <hr>
             </div>
 </main>
+<hr>
 
 <!--FOOTER-->
 <footer class="container-fluid pt-5" id="footer">
@@ -238,6 +239,6 @@
 {% endblock %}
 
 {% block javascripts %}
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="{{ asset('/dist/js/carousel.js') }}"></script>
 {% endblock %}

@@ -9,7 +9,7 @@ html {
     width: 100%;
     height: 100%;
     color: rgb(46, 71, 27);
-    background-color: rgb(216, 214, 207);
+    background-color: rgb(230, 252, 238);
     font-family: 'Merienda', cursive;
 }
 
@@ -23,6 +23,8 @@ img {
     width: 100%;
     height: auto;
 }
+
+/* Header */
 
 #menu {
     margin-top: 20px;
@@ -63,6 +65,49 @@ a:hover {
     color: rgb(216, 207, 207);
     text-shadow: 0 0 10px #222;
 }
+
+/* Main */
+
+.card-body {
+    opacity: 0.5;
+    color:rgb(216, 214, 207);
+}
+
+#jardin {
+    background-color:#275A19;
+}
+
+#cigales {
+    background-color:#468C2A;
+}
+
+#amap {
+    background-color:#E94E16;
+}
+
+#echanges {
+    background-color:#024697;
+}
+
+#cafe {
+    background-color: #331F0E; 
+}
+
+#compost {
+    background-color:#7E4F25;
+}
+
+#boite {
+    background-color:#0F70B7;
+}
+
+#velo {
+    background-color:#515656; 
+}
+
+
+
+
 
 /* Footer */
 
