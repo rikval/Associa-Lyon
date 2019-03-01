@@ -7,5 +7,5 @@
 
     {{ include('proposition/_form.html.twig') }}
 
-    <a href="{{ path('proposition_index') }}">back to list</a>
+    <a href="{{app.request.headers.get('referer') }}">Annuler</a>
 {% endblock %}
