@@ -3,11 +3,12 @@
 {% block title %}Edit Initiative{% endblock %}
 
 {% block body %}
-    <h1>Edit Initiative</h1>
+    <h1>Modifier une initiative</h1>
 
     {{ include('initiative/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{app.request.headers.get('referer') }}">Annuler</a>
+    <a href="{{app.request.headers.get('referer') }}" class="btn btn-outline-info mt-4" style="float:right">Annuler</a>
 
     {{ include('initiative/_delete_form.html.twig') }}
 {% endblock %}
+
