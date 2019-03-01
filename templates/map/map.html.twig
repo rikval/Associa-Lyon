@@ -6,10 +6,19 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Carte intéractive</h1>
-    <div id="mapid" style="height: 700px; width: 700px;"></div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2 class="m-4 font-weight-normal">Carte interactive</h2>
+                <p>Cherchez et trouvez toutes les initiatives de quartier autour de vous sur notre carte interactive!</p><br>
+                <p>Elle rassemble plus de 700 manières d'agir et de s'inspirer dans des associations sur Lyon et ses alentours</p>
+            </div>
+            <div class="col-12 col-md-6 mt-4">
+                <div id="mapid" style="height: 700px; width: 700px;"></div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block javascripts %}
