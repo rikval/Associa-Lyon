@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}ASSOCIA'LYON{% endblock %}</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/home.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/style.css') }}" />        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Merienda">
-    
-    
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <header class="py-2">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}ASSOCIA'LYON{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/home.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/style.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Merienda">
+
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+    <header class="py-2">
         <div class="container-fluid bg-dark" id="cover">
 
             <div class="container text-center">
-            <h1 class="pb-3">ASSOCIA'LYON</h1>
-            <p class="pb-3">Agir ensemble pour une ville plus écologique et solidaire</p>
+                <h1 class="pb-3">ASSOCIA'LYON</h1>
+                <p class="pb-3">Agir ensemble pour une ville plus écologique et solidaire</p>
 
-        </div>       
+            </div>
             <nav class="site-header sticky-top py-1">
-                <div class="container d-flex flex-column flex-md-row justify-content-between">        
-                        <a class="nav-link text-info" href="/home">Associa'Lyon</a>
-                        <a class="nav-link text-info" href="/categorie">Trouver une initiative</a>
-                        <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
-                        <a class="nav-link text-info" href="/map">Près de chez vous</a>
+                <div class="container d-flex flex-column flex-md-row justify-content-between">
+                    <a class="nav-link text-info" href="/home">Associa'Lyon</a>
+                    <a class="nav-link text-info" href="/categorie">Trouver une initiative</a>
+                    <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
+                    <a class="nav-link text-info" href="/map">Près de chez vous</a>
                     {% if is_granted('ROLE_USER') %}
-                        <a class="nav-link text-info" href="/userui">Mon Espace</a>
-                        <a class="nav-link text-info" href="/logout">Déconnexion</a>
+                    <a class="nav-link text-info" href="/userui">Mon Espace</a>
+                    <a class="nav-link text-info" href="/logout">Déconnexion</a>
                     {% else %}
-                        <a class="nav-link text-info" href="/register">S'enregistrer</a>
-                        <a class="nav-link text-info" href="/login">Connexion</a>
+                    <a class="nav-link text-info" href="/register">S'enregistrer</a>
+                    <a class="nav-link text-info" href="/login">Connexion</a>
                     {% endif %}
                 </div>
             </nav>
 
-            </div>
-        </header>
-<!-- TODO:
+        </div>
+    </header>
+    <!-- TODO:
              <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4">
@@ -57,7 +59,7 @@
             </div> -->
 
 
-            <!-- <div class="d-block d-md-none nopadding">
+    <!-- <div class="d-block d-md-none nopadding">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>  
                 </div>
@@ -80,24 +82,72 @@
                     </nav>              
                 </div -->
 
-            <!-- <nav class="navbar navbar-dark bg-dark">
+    <!-- <nav class="navbar navbar-dark bg-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
                     aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </nav> -->
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
-        <script type="text/javascript" src="{{ asset('/dist/js/script.js') }}"></script>
+    <!--FOOTER-->
+    <footer class="container-fluid pt-5" id="footer"><hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-3 pb-5">
+                    <h4>Informations</h4>
+                    <nav>
+                        <ul>
+                            <li><a href="apropos.html">À Propos</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="mentions.html">Dons citoyens</a></li>
+                            <li><a href="presse.html">Presse</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-12 col-md-3 pb-5">
+                    <h4>Réseaux sociaux</h4>
+                    <nav>
+                        <ul>
+                            <li><a href="facebook.html">Facebook</a></li>
+                            <li><a href="instagram.html">Instagram</a></li>
+                            <li><a href="twitter.html">Twitter</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h3>Nos actualités</h3>
+                    <p>Abonnez-vous à notre newsletter pour être tenu informé des news d'Associa'Lyon !</p>
+                    <p class="error py-3 text-center">Vous n'avez pas rempli correctement le formulaire</p>
+                    <form action="newsletter.php" id="newsletter" method="post">
+                        <fieldset>
+                            <input class="col-12 col-md-6 mb-3" id="email" name="email" placeholder="Adresse E-mail"
+                                type="email"></fieldset>
+                        <input type="submit" class="text-white bg-secondary" value="VALIDER">
+                    </form>
+                </div>
+                <div class="col-12 pt-4">
+                    <p>Pour toute question ou renseignement, nous sommes joignables au 09 81 67 26 81 - du lundi au
+                        samedi de 9h30 à 18h00.
+                    </p>
+                    <p>Un site animé par Associa'Lyon. Images par Jean-Luc Cadrado. Tous droits réservés -
+                        2019.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        {% block javascripts %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('/dist/js/script.js') }}"></script>
+
+    {% block javascripts %}{% endblock %}
 
 
-    </body>
+</body>
+
 </html>
