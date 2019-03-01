@@ -5,7 +5,10 @@
 {% block body %}
     <h1>Initiative index</h1>
 
-    <table class="table">
+    {% for cat in categories %}
+        {{ cat.titre }}
+    {% endfor %}
+    {#<table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -50,5 +53,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('initiative_new') }}">Create new</a>
+    <a href="{{ path('initiative_new') }}">Create new</a>#}
+
+
 {% endblock %}

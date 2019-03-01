@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Initiative index{% endblock %}
+
+{% block body %}
+<h1>Categorie</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Voir</th>
+    </thead>
+    <tbody>
+        {% for categorie in categories %}
+        <tr>
+            <td>{{ categorie.id }}</td>
+            <td>{{ categorie.titre }}</td>
+            <td>{{ categorie.description }}</td>
+            <td>
+                <a href="{{ path('categorie_show', {'id': categorie.id}) }}">Voir</a>
+            </td>  
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
