@@ -22,9 +22,13 @@ function fillInAddress() {
     var place = autocomplete.getPlace();
 
     console.log(place);
+    document.getElementById("initiative_adresse").value = place.address_components[0].long_name + ' ' +place.address_components[1].long_name;
+    document.getElementById("initiative_zip").value = place.address_components[6].long_name;
+    document.getElementById("initiative_ville").value = place.address_components[2].long_name;
     document.getElementById("initiative_longitude").value = place.geometry.location.lng();
     document.getElementById("initiative_latitude").value = place.geometry.location.lat();
 
+   
 }
 
 // Bias the autocomplete object to the user's geographical location,
