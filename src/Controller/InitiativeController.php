@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\CategorieRepository;
 
 
 /**
@@ -17,17 +18,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class InitiativeController extends AbstractController
 {
+
+    private $categorieRepository;
+
+    public function __construct(CategorieRepository $categorieRepository) {
+        $this->categorieRepository = $categorieRepository;
+    }
+
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="initiative_index", methods={"GET"})
      */
     public function index(InitiativeRepository $initiativeRepository): Response
     {
 
         $initiatives = $initiativeRepository->findAll();
+        $categories = $this->categorieRepository->findAll();
         
         return $this->render('initiative/index.html.twig', [
             'initiatives' => $initiatives,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'categories' => $categories
         ]);
     }
 

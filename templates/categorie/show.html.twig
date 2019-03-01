@@ -1,30 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Initiative index{% endblock %}
+{% block title %}{{ categorie.titre }}{% endblock %}
 
 {% block body %}
-    <h1>Initiative index</h1>
+<h1>{{ categorie.titre }}</h1>
+<p>{{ categorie.description }}</p>
 
-    <table class="table">
-        <thead>
+<a href="{{ path('initiative_new') }}">Create new</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Adresse</th>
+            <th>Zip</th>
+            <th>Ville</th>
+            <th>Siteweb</th>
+            <th>Phone</th>            
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>        
+        {% for initiative in categorie.initiative %}
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Adresse</th>
-                <th>Zip</th>
-                <th>Ville</th>
-                <th>Siteweb</th>
-                <th>Phone</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for initiative in initiatives %}
-            <tr>
-                <td>{{ initiative.id }}</td>
                 <td>{{ initiative.titre }}</td>
                 <td>{{ initiative.description }}</td>
                 <td>{{ initiative.adresse }}</td>
@@ -32,8 +31,6 @@
                 <td>{{ initiative.ville }}</td>
                 <td>{{ initiative.siteweb }}</td>
                 <td>{{ initiative.phone }}</td>
-                <td>{{ initiative.longitude }}</td>
-                <td>{{ initiative.latitude }}</td>
                 <td>
                     <a href="{{ path('initiative_show', {'id': initiative.id}) }}">show</a>
 
@@ -41,16 +38,15 @@
                     <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">edit</a>
                     {% endif %}
                 </td>
-            </tr>
-        {% else %}
+            </tr>        
+            {% else %}
             <tr>
                 <td colspan="11">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
 
-    <a href="{{ path('initiative_new') }}">Create new</a>
+</table>
 
 
 {% endblock %}
