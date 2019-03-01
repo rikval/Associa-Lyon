@@ -1,11 +1,20 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+        {{ form_row(form.titre) }}
+        {{ form_row(form.description) }}
+    <div id="locationField">
+        <label for="autocomplete">Votre adresse</label>
+        <input class="form-control" id="autocomplete" placeholder="" onFocus="geolocate()" type="text" />        
+    </div>
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.zip, {'label': 'Code postale'}) }}
+        {{ form_row(form.ville) }}
+        {{ form_row(form.siteweb) }}
+        {{ form_row(form.phone, {'label': 'Téléphone'}) }}
+        {{ form_row(form.longitude) }}
+        {{ form_row(form.latitude) }}
+        {{ form_row(form.categorie) }}
+        <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
-
-<div id="locationField">
-    <input id="autocomplete" placeholder="Votre adresse" onFocus="geolocate()" type="text" />
-</div>
 
 
 {% block javascripts %}
