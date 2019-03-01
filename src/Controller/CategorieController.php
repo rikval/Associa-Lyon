@@ -23,7 +23,8 @@ class CategorieController extends AbstractController
         $categories = $categorieRepository->findAll();
 
         return $this->render('categorie/index.html.twig', [
-            'categories' => $categories
+            'categories' => $categories,
+            'user' => $this->getUser()
         ]);
     }
 
@@ -36,6 +37,7 @@ class CategorieController extends AbstractController
 
         return $this->render('categorie/show.html.twig', [
             'categorie' => $categorie,
+            'user' => $this->getUser(),
         ]);
     
     } 
