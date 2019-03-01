@@ -2,14 +2,15 @@
 
 {% block body %}
 
-<h1>Mon espace</h1>
-
-<h4>Mes initiatives</h4>
+<h1 class="m-4 font-weight-normal" style="text-align:center">Mon espace</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h2 class="m-4 font-weight-normal" style="text-align:center">Mes initiatives</h2><br>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Titre</th>
             <th>Description</th>
             <th>Adresse</th>
@@ -17,15 +18,12 @@
             <th>Ville</th>
             <th>Siteweb</th>
             <th>Phone</th>
-            <th>Longitude</th>
-            <th>Latitude</th>
             <th>actions</th>
         </tr>
     </thead>
     <tbody>
         {% for initiative in initiatives %}
         <tr>
-            <td>{{ initiative.id }}</td>
             <td>{{ initiative.titre }}</td>
             <td>{{ initiative.description }}</td>
             <td>{{ initiative.adresse }}</td>
@@ -33,13 +31,11 @@
             <td>{{ initiative.ville }}</td>
             <td>{{ initiative.siteweb }}</td>
             <td>{{ initiative.phone }}</td>
-            <td>{{ initiative.longitude }}</td>
-            <td>{{ initiative.latitude }}</td>
             <td>
-                <a href="{{ path('initiative_show', {'id': initiative.id}) }}">show</a>
+                <a href="{{ path('initiative_show', {'id': initiative.id}) }}">Voir</a>
 
                 {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
-                <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">edit</a>
+                <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">Modifier</a>
                 {% endif %}
             </td>
         </tr>
@@ -52,13 +48,14 @@
 </table>
 
 <a href="{{ path('initiative_new') }}">Nouvelle initiative</a>
+        </div>
 
-<h4>Mes Propositions</h4>
+        <div class="col-12 col-md-6">       
+            <h2 class="m-4 font-weight-normal" style="text-align:center">Mes Propositions</h2><br>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Titre</th>
             <th>Description</th>
             <th>Created_at</th>
@@ -68,14 +65,13 @@
     <tbody>
         {% for proposition in propositions %}
         <tr>
-            <td>{{ proposition.id }}</td>
             <td>{{ proposition.titre }}</td>
             <td>{{ proposition.description }}</td>
             <td>{{ proposition.createdAt ? proposition.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             <td>
-                <a href="{{ path('proposition_show', {'id': proposition.id}) }}">show</a>
+                <a href="{{ path('proposition_show', {'id': proposition.id}) }}">Voir</a>
                 {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
-                <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">edit</a>
+                <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">Modifier</a>
                 {% endif %}
             </td>
         </tr>
@@ -87,5 +83,8 @@
     </tbody>
 </table>
 
-<a href="{{ path('proposition_new') }}">Create new</a>
+<a href="{{ path('proposition_new') }}">Nouvelle proposition</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

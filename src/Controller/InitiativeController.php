@@ -26,7 +26,6 @@ class InitiativeController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="initiative_index", methods={"GET"})
      */
     public function index(InitiativeRepository $initiativeRepository): Response
