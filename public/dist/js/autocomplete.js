@@ -21,12 +21,10 @@ function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
 
-    //console.log(place);
+    console.log(place);
+    document.getElementById("initiative_longitude").value = place.geometry.location.lng();
+    document.getElementById("initiative_latitude").value = place.geometry.location.lat();
 
-
-    console.log('Adresse trouvée: ' + place.formatted_address);
-    console.log('Latitude: ' + place.geometry.location.lat());
-    console.log('Longitude: ' + place.geometry.location.lng());
 }
 
 // Bias the autocomplete object to the user's geographical location,
