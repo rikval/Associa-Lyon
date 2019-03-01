@@ -21,12 +21,14 @@ function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
 
-    //console.log(place);
+    console.log(place);
+    document.getElementById("initiative_adresse").value = place.address_components[0].long_name + ' ' +place.address_components[1].long_name;
+    document.getElementById("initiative_zip").value = place.address_components[6].long_name;
+    document.getElementById("initiative_ville").value = place.address_components[2].long_name;
+    document.getElementById("initiative_longitude").value = place.geometry.location.lng();
+    document.getElementById("initiative_latitude").value = place.geometry.location.lat();
 
-
-    console.log('Adresse trouvée: ' + place.formatted_address);
-    console.log('Latitude: ' + place.geometry.location.lat());
-    console.log('Longitude: ' + place.geometry.location.lng());
+   
 }
 
 // Bias the autocomplete object to the user's geographical location,
