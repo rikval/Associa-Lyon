@@ -73,6 +73,11 @@ class Initiative
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $img;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +211,18 @@ class Initiative
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    public function setImg($img)
+    {
+        $this->img = $img;
 
         return $this;
     }

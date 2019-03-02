@@ -54,6 +54,10 @@ class InitiativeController extends AbstractController
         $initiative->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $initiative->getImg();
+            $fileName = md5(uniqid()). '.' .$file->guessExtension();
+            $file->move($this->getParameter('updload_directory'), $fileName);
+            $initiative->setImg($fileName);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($initiative);
             $entityManager->flush();

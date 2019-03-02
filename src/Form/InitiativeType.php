@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Categorie;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 class InitiativeType extends AbstractType
@@ -29,7 +29,8 @@ class InitiativeType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'titre'
-            ]);
+            ])
+            ->add('img', FileType::class)
         ;
     }
 

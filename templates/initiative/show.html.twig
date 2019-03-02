@@ -36,17 +36,10 @@
                 <th>Téléphone</th>
                 <td>{{ initiative.phone }}</td>
             </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ initiative.longitude }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ initiative.latitude }}</td>
-            </tr>
+            <img src="{{ initiative.img }}"/>
         </tbody>
     </table>
-      
+
     <a href="{{ path('home') }}" class="btn btn-outline-info" style="float:right">Retour à la liste</a>
     {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
     <a href="{{ path('initiative_edit', {'id': initiative.id}) }}" class="btn btn-outline-info" style="float:left">Modifier</a>
