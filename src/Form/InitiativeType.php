@@ -30,7 +30,7 @@ class InitiativeType extends AbstractType
                 'class' => Categorie::class,
                 'choice_label' => 'titre'
             ])
-            ->add('img', FileType::class)
+            ->add('img', FileType::class, array('data_class' => null,'required' => false))
         ;
     }
 
