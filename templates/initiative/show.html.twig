@@ -36,7 +36,9 @@
                 <th>Téléphone</th>
                 <td>{{ initiative.phone }}</td>
             </tr>
-            <img src="../dist/img/initiative/{{ initiative.img }}"/>
+            {% if initiative.img %}
+                <img src="../dist/img/initiative/{{ initiative.img }}"/>
+            {% endif %}
         </tbody>
     </table>
 
