@@ -3,51 +3,51 @@
 {% block title %}Mes Initiatives{% endblock %}
 
 {% block body %}
-    <h2 class="m-4 font-weight-normal text-center">Mes initiatives</h2>
-    <div class="container">
-    <div class="col-12">
-    <table class="table table-striped table-bordered text-center">
-        <tbody>
-            <tr>
-                <th>Titre</th>
-                <td>{{ initiative.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ initiative.description }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ initiative.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Code postal</th>
-                <td>{{ initiative.zip }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ initiative.ville }}</td>
-            </tr>
-            <tr>
-                <th>Site Web</th>
-                <td>{{ initiative.siteweb }}</td>
-            </tr>
-            <tr>
-                <th>Téléphone</th>
-                <td>{{ initiative.phone }}</td>
-            </tr>
+<h2 class="m-4 font-weight-normal text-center">Mes initiatives</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-9">
+            <table class="table table-striped table-bordered text-center">
+                <tbody>
+                    <tr>
+                        <td>{{ initiative.titre }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ initiative.description }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ initiative.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ initiative.zip }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ initiative.ville }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ initiative.siteweb }}" target="_blank">
+                            {{initiative.siteweb }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>{{ initiative.phone }}</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-lg-3 ">
+
             {% if initiative.img %}
-                <img src="../dist/img/initiative/{{ initiative.img }}"/>
+            <img style="height: 260px; width: auto;" src="../dist/img/initiative/{{ initiative.img }}" />
             {% endif %}
-        </tbody>
-    </table>
+        </div>
+        <a href="{{ path('home') }}" class="btn btn-outline-info" style="float:right">Retour à la liste</a>
+        {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
+        <a href="{{ path('initiative_edit', {'id': initiative.id}) }}" class="btn btn-outline-info" style="float:left">Modifier</a>
+        {{ include('initiative/_delete_form.html.twig') }}
+        {% endif %}
 
-    <a href="{{ path('home') }}" class="btn btn-outline-info" style="float:right">Retour à la liste</a>
-    {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
-    <a href="{{ path('initiative_edit', {'id': initiative.id}) }}" class="btn btn-outline-info" style="float:left">Modifier</a>
-    {{ include('initiative/_delete_form.html.twig') }}
-    {% endif %}
     </div>
-    </div> 
+</div>
 {% endblock %}
-
