@@ -5,74 +5,46 @@
 <h1 class="mt-4 font-weight-normal" style="text-align:center">Mon espace</h1><br><hr>
 <div class="container">
     <div class="row">
+
         <div class="col-12 col-md-6">
             <h2 class="m-4 font-weight-normal text-center">Mes initiatives</h2>
 
-<table class="table table-striped table-bordered text-center">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for initiative in initiatives %}
-        <tr>
-            <td>{{ initiative.titre }}</td>
-            <td>{{ initiative.description }}</td>
-            <td>
-                <a href="{{ path('initiative_show', {'id': initiative.id}) }}" class="btn btn-outline-info">Voir</a>
+                        {% for initiative in initiatives %}
 
-                {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
-                <a href="{{ path('initiative_edit', {'id': initiative.id}) }}" class="btn btn-outline-info mt-2">Modifier</a>
-                
-                {% endif %}
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="11">no records found</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+                        <div class="card mb-2">
+                            <div class="card-header">{{ initiative.titre }}</div>
+                            <div class="card-body">{{ initiative.description }}</div>
+                            <div class="card-footer">
+                                <a href="{{ path('initiative_show', {'id': initiative.id}) }}" class="btn btn-outline-info">Voir</a>
 
-    <a href="{{ path('initiative_new') }}" class="btn btn-outline-info" style="float:right">Nouvelle initiative</a>
+                                {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
+                                    <a href="{{ path('initiative_edit', {'id': initiative.id}) }}" class="btn btn-outline-info">Modifier</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                <a href="{{ path('initiative_new') }}" class="btn btn-outline-info" style="float:right">Nouvelle initiative</a>
         </div>
 
         <div class="col-12 col-md-6">       
             <h2 class="m-4 font-weight-normal text-center">Mes Propositions</h2>
 
-<table class="table table-striped table-bordered text-center">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for proposition in propositions %}
-        <tr>
-            <td>{{ proposition.titre }}</td>
-            <td>{{ proposition.description }}</td>
-            <td>
-                <a href="{{ path('proposition_show', {'id': proposition.id}) }}" class="btn btn-outline-info">Voir</a>
-                {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
-                <a href="{{ path('proposition_edit', {'id': proposition.id}) }}" class="btn btn-outline-info mt-2">Modifier</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="5">no records found</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+                        {% for proposition in propositions %}
 
-<a href="{{ path('proposition_new') }}" class="btn btn-outline-info" style="float:right">Nouvelle proposition</a>
+                        <div class="card mb-2">
+                            <div class="card-header">{{ proposition.titre }}</div>
+                            <div class="card-body">{{ proposition.description }}</div>
+                            <div class="card-footer">
+                                <a href="{{ path('proposition_show', {'id': proposition.id}) }}" class="btn btn-outline-info">Voir</a>
+                                {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
+                                    <a href="{{ path('proposition_edit', {'id': proposition.id}) }}" class="btn btn-outline-info">Modifier</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                <a href="{{ path('proposition_new') }}" class="btn btn-outline-info" style="float:right">Nouvelle proposition</a>
         </div>
     </div>
 </div>
