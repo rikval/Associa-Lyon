@@ -44,8 +44,8 @@
                 <div class="card" style="width: 17rem; height: 26rem;">
                     <img src="../dist/img/categorie/{{ categorie.img }}" class="card-img-top" alt="{{ categorie.titre }}">
                     <div class="card-body" id="amap">
-                        <h5 class="card-title"><strong>{{ categorie.titre }}</strong></h5>
-                        <p class="card-text">{{ categorie.description }}</p>
+                        <h5 class="card-title mb-3" style="font-size: 0.9em;"><strong>{{ categorie.titre }}</strong></h5>
+                        <p class="card-text" style="font-size: 0.8em;">{{ categorie.description|length > 140 ? categorie.description|slice(0, 140) ~ '...' : categorie.description }}</p>
                     </div>
                 </div>
                 </a>
