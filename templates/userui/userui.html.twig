@@ -22,10 +22,11 @@
             <td>{{ initiative.titre }}</td>
             <td>{{ initiative.description }}</td>
             <td>
-                <a href="{{ path('initiative_show', {'id': initiative.id}) }}">Voir</a>
+                <a href="{{ path('initiative_show', {'id': initiative.id}) }}" class="btn btn-outline-info">Voir</a>
 
                 {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
-                <a href="{{ path('initiative_edit', {'id': initiative.id}) }}">Modifier</a>
+                <a href="{{ path('initiative_edit', {'id': initiative.id}) }}" class="btn btn-outline-info mt-2">Modifier</a>
+                
                 {% endif %}
             </td>
         </tr>
@@ -57,9 +58,9 @@
             <td>{{ proposition.titre }}</td>
             <td>{{ proposition.description }}</td>
             <td>
-                <a href="{{ path('proposition_show', {'id': proposition.id}) }}">Voir</a>
+                <a href="{{ path('proposition_show', {'id': proposition.id}) }}" class="btn btn-outline-info">Voir</a>
                 {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
-                <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">Modifier</a>
+                <a href="{{ path('proposition_edit', {'id': proposition.id}) }}" class="btn btn-outline-info mt-2">Modifier</a>
                 {% endif %}
             </td>
         </tr>
