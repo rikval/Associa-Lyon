@@ -12,6 +12,21 @@
                 <h2 class="m-4 font-weight-normal">Carte interactive</h2>
                 <p>Cherchez et trouvez toutes les initiatives de quartier autour de vous sur notre carte interactive!</p><br>
                 <p>Elle rassemble plus de 700 manières d'agir et de s'inspirer dans des associations sur Lyon et ses alentours</p>
+
+
+                {% for initiative in initiatives %}
+                    <div class="card"
+                        data-initiative-id={{ initiative.id }}
+                        data-initiative-longitude={{ initiative.longitude }}
+                        data-initiative-latitude={{ initiative.latitude }}
+                        data-initiative-categorie-id={{ initiative.categorie.id }}
+
+                        style="display:none"
+                    >
+                        <div class="card-header">{{ initiative.titre }}</div>
+                    </div>
+                {% endfor %}
+                
             </div>
             <div class="col-12 col-md-6 mt-4">
                 <div id="mapid" style="height: 700px; width: 700px;"></div>
@@ -25,4 +40,61 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" 
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
     <script type="text/javascript" src="{{ asset('/dist/js/leaflet.js') }}"></script>
+
+    <script>
+
+        $(function() {
+
+            
+
+
+            var mymap = L.map('mapid').setView([45.75, 4.85], 12);
+
+
+
+            var tileStreets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'pk.eyJ1IjoiZGVpdmVjYXQiLCJhIjoiY2pzazcwdXZxMHh6YzQzbGlmb2RuaTJtdSJ9.b6xnSK_6kVfPgM4B_RF1BA'
+            })
+            tileStreets.addTo(mymap);
+
+            $("div[data-initiative-id]").each(function() {
+
+
+                const el = $(this);
+
+                var icon = null;
+
+                switch (el.data('initiative-categorie-id')) {
+                case 1:
+                    icon = amapIcon;
+                    break;
+                case 2:
+                    icon = cafeIcon;
+                    break;
+                default:
+                    icon = cygaleIcon;
+                }
+
+                L.marker([ el.data('initiative-latitude') , el.data('initiative-longitude')], {
+                icon: icon
+                }).addTo(mymap).bindPopup("AMAP").on('click', function() { 
+
+
+                    $("div[data-initiative-id]").each(function() {
+                        $(this).hide();
+                    });
+
+                    el.show();
+
+                });
+
+            });
+
+        });
+
+    </script>
+
 {% endblock %}
