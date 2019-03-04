@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Proposition{% endblock %}
+{% block title %}Nouvelle proposition{% endblock %}
 
 {% block body %}
-    <h1>Create new Proposition</h1>
+    <h2 class="m-4 font-weight-normal text-center">Créer une nouvelle proposition</h2>
 
     {{ include('proposition/_form.html.twig') }}
 
-    <a href="{{app.request.headers.get('referer') }}">Annuler</a>
+<div class="container">
+    <div class="col-12">   
+    <a href="{{app.request.headers.get('referer') }}" class="btn btn-outline-info mt-2">Annuler</a>
+    </div>
+</div>
+
 {% endblock %}

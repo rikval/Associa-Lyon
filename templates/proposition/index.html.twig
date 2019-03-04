@@ -1,31 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Proposition index{% endblock %}
+{% block title %}Liste des propositions{% endblock %}
 
 {% block body %}
-    <h1>Proposition index</h1>
+    <h2 class="m-4 font-weight-normal text-center">Liste des propositions</h2><br>
 
-    <table class="table">
+    <div class="container">
+        <div class="col-12">
+            <table class="table table-striped table-bordered text-center">
+    
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
-                <th>Created_at</th>
-                <th>actions</th>
+                <th>Crée le</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for proposition in propositions %}
             <tr>
-                <td>{{ proposition.id }}</td>
                 <td>{{ proposition.titre }}</td>
                 <td>{{ proposition.description }}</td>
-                <td>{{ proposition.createdAt ? proposition.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ proposition.createdAt ? proposition.createdAt|date('d-m-Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('proposition_show', {'id': proposition.id}) }}">show</a>
+                    <a href="{{ path('proposition_show', {'id': proposition.id}) }}" class="btn btn-outline-info">Voir</a>
                     {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
-                    <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">edit</a>
+                    <a href="{{ path('proposition_edit', {'id': proposition.id}) }}" class="btn btn-outline-info">Modifier</a>
                     {% endif %}
                 </td>
             </tr>
@@ -35,7 +36,9 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+            </table>
 
-    <a href="{{ path('proposition_new') }}">Create new</a>
+    <a href="{{ path('proposition_new') }}" class="btn btn-outline-info">Nouvelle proposition</a>
+        </div>
+    </div>
 {% endblock %}
