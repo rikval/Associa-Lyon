@@ -20,10 +20,20 @@
                         data-initiative-longitude={{ initiative.longitude }}
                         data-initiative-latitude={{ initiative.latitude }}
                         data-initiative-categorie-id={{ initiative.categorie.id }}
+                        data-initiative-titre={{ initiative.titre }}
 
                         style="display:none"
                     >
-                        <div class="card-header">{{ initiative.titre }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ initiative.titre }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ initiative.categorie.titre }}</h6>
+                            <p class="card-text">{{ initiative.description }}</p>
+                            <p class="card-text">{{ initiative.adresse }}</p>
+                            <p class="card-text">{{ initiative.zip }} {{ initiative.ville }}</p>
+                            <p class="card-text">{{ initiative.phone }}</p>
+                            <p class="card-text">{{ initiative.siteweb }}</p>
+                            
+                        </div>
                     </div>
                 {% endfor %}
                 
@@ -74,13 +84,31 @@
                 case 2:
                     icon = cafeIcon;
                     break;
+                case 3:
+                    icon = boitePartageIcon;
+                    break;
+                case 4:
+                    icon = composteurIcon;
+                    break;
+                case 5:
+                    icon = cygaleIcon;
+                    break;
+                case 6:
+                    icon = echangesLocauxIcon;
+                    break;
+                case 7:
+                    icon = jardinsPartagesIcon;
+                    break;
+                case 8:
+                    icon = reparationVeloIcon;
+                    break;
                 default:
                     icon = cygaleIcon;
                 }
 
                 L.marker([ el.data('initiative-latitude') , el.data('initiative-longitude')], {
                 icon: icon
-                }).addTo(mymap).bindPopup("AMAP").on('click', function() { 
+                }).addTo(mymap).bindPopup("data-initiative-titre").on('click', function() { 
 
 
                     $("div[data-initiative-id]").each(function() {
