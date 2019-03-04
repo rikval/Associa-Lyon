@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\MessageRepository;
+use App\Form\MessageFormType;
+use App\Entity\Message;
 
 /**
  * @Route("/proposition")
@@ -54,12 +57,25 @@ class PropositionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="proposition_show", methods={"GET"})
+     * @Route("/{id}", name="proposition_show", methods={"GET", "POST"})
      */
-    public function show(Proposition $proposition): Response
+    public function show(Proposition $proposition, Request $request): Response
     {
+        $message = new Message();
+        $form = $this->createForm(MessageFormType::class, $message);
+        $form->handleRequest($request);
+
+        $message->setUser($this->getUser());
+        $message->setProposition($proposition);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist( $message);
+            $entityManager->flush();
+        }
+
         return $this->render('proposition/show.html.twig', [
             'proposition' => $proposition,
+            'form' => $form->createView(),
             'user' => $this->getUser()
         ]);
     }

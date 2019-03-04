@@ -26,6 +26,17 @@
         </tbody>
     </table>
 
+    {{ form_start(form) }}
+    {{ form_row(form.message) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+    {% for message in proposition.messages %}
+            {{ message.message }}
+            {{ message.user.surname }}
+            {{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}
+    {% endfor %}
+
     <a href="{{ path('proposition_index') }}">back to list</a>
 
     {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
