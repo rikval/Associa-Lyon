@@ -17,76 +17,39 @@
 
 <body>
     <header class="py-2">
-        <div class="container-fluid bg-dark" id="cover">
+        <div class="container-fluid" id="cover">
 
             <div class="container text-center">
                 <h1 class="pb-3">ASSOCIA'LYON</h1>
                 <p class="pb-3">Agir ensemble pour une ville plus écologique et solidaire</p>
 
             </div>
-            <nav class="site-header sticky-top py-1">
-                <div class="container d-flex flex-column flex-md-row justify-content-between">
-                    <a class="nav-link text-info" href="/home">Associa'Lyon</a>
-                    <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
-                    <a class="nav-link text-info" href="/map">Près de chez vous</a>
-                    {% if is_granted('ROLE_USER') %}
-                    <a class="nav-link text-info" href="/userui">Mon Espace</a>
-                    <a class="nav-link text-info" href="/logout">Déconnexion</a>
-                    {% else %}
-                    <a class="nav-link text-info" href="/register">S'enregistrer</a>
-                    <a class="nav-link text-info" href="/login">Connexion</a>
-                    {% endif %}
-                </div>
-            </nav>
-
-        </div>
-    </header>
-    <!-- TODO:
-             <div class="pos-f-t">
-                <div class="collapse" id="navbarToggleExternalContent">
-                    <div class="bg-dark p-4">
-                        <h4 class="text-white">Collapsed content</h4>
-                        <span class="text-muted">Toggleable via the navbar brand.</span>
-                    </div>
-                </div>
-                <nav class="navbar navbar-dark bg-dark">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-                        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </nav>
-            </div> -->
-
-
-    <!-- <div class="d-block d-md-none nopadding">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                    </div>  
-                </div>
-                <div class="site-header sticky-top py-1" id="headermobile">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                    <nav class="col-8 offset-2">
-                        <div class="container d-flex flex-column flex-md-row justify-content-between">        
-                                <a class="nav-link text-info" href="/home">Associa'Lyon</a>
-                                <a class="nav-link text-info" href="/initiative">Trouver une initiative</a>
-                                <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
-                                <a class="nav-link text-info" href="/map">Près de chez vous</a>
-                            {% if is_granted('ROLE_USER') %}
-                                <a class="nav-link text-info" href="/userui">Mon Espace</a>
-                                <a class="nav-link text-info" href="/logout">Déconnexion</a>
-                            {% else %}
-                                <a class="nav-link text-info" href="/register">S'enregistrer</a>
-                                <a class="nav-link text-info" href="/login">Connexion</a>
-                            {% endif %}
-                        </div>
-                    </nav>              
-                </div -->
-
-    <!-- <nav class="navbar navbar-dark bg-dark">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-                    aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            </nav> -->
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <nav class="site-header sticky-top py-1">
+                            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                                <a class="nav-link text-info" href="/home">Associa'Lyon</a>
+                                <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
+                                <a class="nav-link text-info" href="/map">Près de chez vous</a>
+                                {% if is_granted('ROLE_USER') %}
+                                <a class="nav-link text-info" href="/userui">Mon Espace</a>
+                                <a class="nav-link text-info" href="/logout">Déconnexion</a>
+                                {% else %}
+                                <a class="nav-link text-info" href="/register">S'enregistrer</a>
+                                <a class="nav-link text-info" href="/login">Connexion</a>
+                                {% endif %}
+                            </div>
+                        </nav>
+                    </div> 
+            </nav>
+    </header>
+
     {% block body %}{% endblock %}
 
     <!--FOOTER-->
