@@ -25,10 +25,16 @@
             </tr>
         </tbody>
     </table>
-
+    
     {{ form_start(form) }}
+    {% if is_granted('ROLE_USER') %}
     {{ form_row(form.message) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
+    {% endif %}
+    {{ form_row(form.message, {'attr': {
+        'placeholder': 'Merci de vous connecter',
+        'disabled': 'true'
+    }}) }}
     {{ form_end(form) }}
 
     {% for message in proposition.messages %}
