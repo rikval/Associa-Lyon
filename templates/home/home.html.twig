@@ -41,30 +41,17 @@
     <div class="row">
         <!-- initiatives -->
         <div class="d-none d-lg-block col-3">
-            <h4><strong>Initiatives en cours</strong></h4>
+            <h4><strong>Besoin de vous</strong></h4>
             <hr>
-            <h5 class="mt-4">Association</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
-                quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
-                cupiditate similique debitis. </p>
-            <a class="btn btn-outline-info" href="#">+ d'infos</a>
-            <hr>
-
-            <h5>Association</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
-                quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
-                cupiditate similique debitis. </p>
-            <a href="#" class="btn btn-outline-info">+ d'infos</a>
-            <hr>
-
-            <h5>Association</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
-                quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
-                cupiditate similique debitis. </p>
-            <a href="#" class="btn btn-outline-info">+ d'infos</a>
-            <hr>
-
+            {% for proposition in propositions %}
             
+            <a href="{{ path('proposition_show', {'id': proposition.id}) }}">
+                <h3>{{ proposition.titre }}</h3>
+                <p>{{ proposition.description }}</p>
+            </a>
+
+            {% endfor %}
+
             <a class="twitter-timeline" data-link-color="#E81C4F" data-theme="light" data-tweet-limit="2" data-width="220" 
             href="https://twitter.com/Anciela?ref_src=twsrc%5Etfw">Tweets by Anciela</a>
 
