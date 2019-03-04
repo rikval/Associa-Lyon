@@ -14,22 +14,15 @@
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Crée le</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for proposition in propositions %}
             <tr>
-                <td>{{ proposition.titre }}</td>
+                <td><a href="{{ path('proposition_show', {'id': proposition.id}) }}">{{ proposition.titre }}</a></td>
                 <td>{{ proposition.description }}</td>
-                <td>{{ proposition.createdAt ? proposition.createdAt|date('d-m-Y') : '' }}</td>
-                <td>
-                    <a href="{{ path('proposition_show', {'id': proposition.id}) }}" class="btn btn-outline-info">Voir</a>
-                    {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
-                    <a href="{{ path('proposition_edit', {'id': proposition.id}) }}" class="btn btn-outline-info">Modifier</a>
-                    {% endif %}
-                </td>
-            </tr>
+                <td>{{ proposition.createdAt ? proposition.createdAt|date('d-m-Y') : '' }}</td>                
+            </tr>            
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>

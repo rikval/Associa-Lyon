@@ -36,9 +36,8 @@ img {
 
 a,
 a:hover {
-     text-decoration: none;
-     color: #222;
-     font-size: 1.2em;
+    text-decoration: none;
+    color: #222;
 }
 
 
@@ -128,7 +127,8 @@ a:hover {
 }
 
 #footer h4 {
-    font-size: 1.em
+    font-size: 1.em;
+    text-decoration: underline;
 }
 
 #footer input[type="text"],
