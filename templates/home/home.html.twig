@@ -8,12 +8,12 @@
     <div class="row">
         <!-- Proposition -->
         <div class="d-none d-lg-block col-3">
-            <h4><strong>Besoin de vous !</strong></h4>
+            <h3><strong>Besoin de vous !</strong></h3>
             <hr>
             {% for proposition in propositions %}
             
             <a href="{{ path('proposition_show', {'id': proposition.id}) }}">
-                <h3>{{ proposition.titre }}</h3>
+                <h4>{{ proposition.titre }}</h4>
                 <p>{{ proposition.description }}</p>
             </a>
 
@@ -26,24 +26,24 @@
         
         <!-- presentation -->
         <div class="col-12 col-lg-9 text-center text-lg-left">
-            <h4><strong>Envie d'agir ?</strong></h4><br>
+            <h3><strong>Envie d'agir ?</strong></h3><br>
             <h5>Comme chacun peut aider à rendre notre société plus écologique, plus solidaire et plus humaine,
                 Associa'Lyon
                 favorise
                 la rencontre entre des personnes qui ont envie d'agir et des associations où s'engager.</h5><br>
-            <h4><strong>Et cela de plusieurs façons !</strong></h4>
+            <h3><strong>Et cela de plusieurs façons !</strong></h3>
             <hr>
 
             <!-- Categories -->
             <div class="row">
             {% for categorie in categories %}
 
-            <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-5">
+            <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-4">
                 
                 <a href="{{ path('categorie_show', {'id': categorie.id}) }}">
                 <div class="card" style="width: 17rem; height: 26rem;">
                     <img src="../dist/img/categorie/{{ categorie.img }}" class="card-img-top" alt="{{ categorie.titre }}">
-                    <div class="card-body" id="amap">
+                    <div class="card-body" id="amap" style="background-color: #D3C2B5;">
                         <h5 class="card-title"><strong>{{ categorie.titre }}</strong></h5>
                         <p class="card-text">{{ categorie.description }}</p>
                     </div>
