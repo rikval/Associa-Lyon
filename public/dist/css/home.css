@@ -38,10 +38,6 @@ a:hover {
 }
 
 
-#quartier {
-    margin-bottom: 40px;
-}
-
 #cover {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -69,8 +65,8 @@ a:hover {
 /* Main */
 
 .card-body {
-    opacity: 0.5;
-    color:rgb(216, 214, 207);
+    color: rgb(46, 71, 27);
+    opacity: 1;
 }
 
 #jardin {
@@ -104,9 +100,6 @@ a:hover {
 #velo {
     background-color:#515656; 
 }
-
-
-
 
 
 /* Footer */
