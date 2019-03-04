@@ -128,7 +128,8 @@ a:hover {
 }
 
 #footer h4 {
-    font-size: 1.em
+    font-size: 1.em;
+    text-decoration: underline;
 }
 
 #footer input[type="text"],
