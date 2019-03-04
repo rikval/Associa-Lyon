@@ -13,9 +13,9 @@
             {{ proposition.createdAt ? proposition.createdAt|date('d-m-Y') : '' }} 
             <br>
             
-            <a class="btn btn-outline-info" href="{{ path('proposition_index') }}">back to list</a>            
+            <a class="btn btn-outline-info" href="{{ path('proposition_index') }}">Retour</a>            
             {% if is_granted('ROLE_USER') and proposition.user.id == user.id %}
-            <a class="btn btn-outline-info" href="{{ path('proposition_edit', {'id': proposition.id}) }}">edit</a>
+            <a class="btn btn-outline-info" href="{{ path('proposition_edit', {'id': proposition.id}) }}">Modifier</a>
             {{ include('proposition/_delete_form.html.twig') }}
             {% endif %}              
         </div>
@@ -32,8 +32,8 @@
                 {{ form_end(form) }}
 
                 {% for message in proposition.messages %}
-                <p>Le {{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}
-                    posté par {{ message.user.surname }}
+                <p>Le {{ message.createdAt ? message.createdAt|date('d-m-Y H:i:s') : '' }}
+                    posté par {{ message.user.firstname }} {{ message.user.surname }}
                 </p>
                 <br>
                 <p>{{ message.message }}</p>
