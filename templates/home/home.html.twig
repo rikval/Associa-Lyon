@@ -2,46 +2,13 @@
 
 {% block body %}
 
-<main>
-{# <div class="container-fluid py-5">
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="dist/img/carousel/ateliers.jpg" style="width: 100%; height: 400px !important;" alt="slider 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="dist/img/carousel/jardon_partages.png" style="width: 100%; height: 400px !important;" alt="slider 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="dist/img/carousel/ateliers.jpg" style="width: 100%; height: 400px !important;" alt="slider 3">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div> #}
-        
+<main>        
 <div class="container py-2">
 
     <div class="row">
-        <!-- initiatives -->
+        <!-- Proposition -->
         <div class="d-none d-lg-block col-3">
-            <h4><strong>Besoin de vous</strong></h4>
+            <h4><strong>Besoin de vous !</strong></h4>
             <hr>
             {% for proposition in propositions %}
             
@@ -69,143 +36,26 @@
 
             <!-- Categories -->
             <div class="row">
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-5">
-                    <div class="card" style="width: 17rem; height: 26rem;">
-                        <img src="dist/img/categorie/amap.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="amap">
-                            <h5 class="card-title"><strong>Amap</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
+            {% for categorie in categories %}
 
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-5">
-                    <div class="card" style="width: 17rem; height: 26rem;  ">
-                        <img src="dist/img/categorie/reparation_velo.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="velo">
-                            <h5 class="card-title"><strong>Réparation de vélos</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
+            <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-5">
+                
+                <a href="{{ path('categorie_show', {'id': categorie.id}) }}">
+                <div class="card" style="width: 17rem; height: 26rem;">
+                    <img src="../dist/img/categorie/{{ categorie.img }}" class="card-img-top" alt="{{ categorie.titre }}">
+                    <div class="card-body" id="amap">
+                        <h5 class="card-title"><strong>{{ categorie.titre }}</strong></h5>
+                        <p class="card-text">{{ categorie.description }}</p>
                     </div>
                 </div>
-                <hr>
+                </a>
 
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-5">
-                    <div class="card" style="width: 17rem; height: 26rem; ">
-                        <img src="dist/img/categorie/cafe.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="cafe">
-                            <h5 class="card-title"><strong>Cafés associatifs</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-4">
-                    <div class="card" style="width: 17rem; height: 26rem; ">
-                        <img src="dist/img/categorie/cigale.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="cigales">
-                            <h5 class="card-title"><strong>Cigales</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-4">
-                    <div class="card" style="width: 17rem; height: 26rem; ">
-                        <img src="dist/img/categorie/composteur.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="compost">
-                            <h5 class="card-title"><strong>Composteurs</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                </p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-4">
-                    <div class="card" style="width: 17rem; height: 26rem;">
-                        <img src="dist/img/categorie/jardin.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="jardin">
-                            <h5 class="card-title"><strong>Jardins partagés</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-4">
-                    <div class="card" style="width: 17rem; height: 26rem; ">
-                        <img src="dist/img/categorie/echanges_locaux.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="echanges">
-                            <h5 class="card-title"><strong>Echanges locaux</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's
-                                content.</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center col-12 col-md-6 col-xl-4 mt-4">
-                    <div class="card" style="width: 17rem; height: 26rem; ">
-                        <img src="dist/img/categorie/boite_partage.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" id="boite">
-                            <h5 class="card-title"><strong>Boîte à partage entre voisins</strong></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk</p>
-                            <a href="#" class="btn btn-secondary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
             </div>
+
+            {% endfor %}
+
         </div>
 
-        <!-- initiatives mobiles -->
-        <div class="d-block d-lg-none text-center col-12 pt-3">
-            <h4><strong>Initiatives en cours</strong></h4>
-            <hr>
-            <h5 class="mt-4">Association</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
-                quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
-                cupiditate similique debitis. </p>
-            <a class="btn btn-outline-info" href="#">Contact et Renseignements</a>
-            <hr>
-
-            <h5>Association</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
-                quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
-                cupiditate similique debitis. </p>
-            <a href="#" class="btn btn-info">Contact et Renseignements</a>
-            <hr>
-
-            <h5>Association</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nulla ipsum eum in sunt mollitia
-                quos, eius labore iste, voluptatibus molestias animi itaque harum. Sequi molestiae ratione
-                cupiditate similique debitis. </p>
-            <a href="#" class="btn btn-info">Contact et Renseignements</a>
-            <hr>
-
-            
-            <a class="twitter-timeline" data-link-color="#E81C4F" data-theme="light" data-tweet-limit="2" data-width="220" 
-            href="https://twitter.com/Anciela?ref_src=twsrc%5Etfw">Tweets by Anciela</a>
-        </div>
         
 
 </main>
