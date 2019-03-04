@@ -14,43 +14,43 @@
 
     {% block stylesheets %}{% endblock %}
 </head>
+<header class="py-2">
+    <div class="container-fluid" id="cover">
 
-<body>
-    <header class="py-2">
-        <div class="container-fluid" id="cover">
+        <div class="container text-center">
+            <h1 class="pb-3" style="font-size: calc(16px + 1.7vw);">ASSOCIA'LYON</h1>
+            <p class="pb-3" style="font-size: calc(10px + 1.2vw);">Agir ensemble pour une ville plus écologique et solidaire</p>
 
-            <div class="container text-center">
-                <h1 class="pb-3">ASSOCIA'LYON</h1>
-                <p class="pb-3">Agir ensemble pour une ville plus écologique et solidaire</p>
+        </div>
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            </div>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="d-md-flex justify-content-center collapse navbar-collapse" id="navbarSupportedContent">
+                    <nav class="site-header sticky-top py-1">
+                        <div class="container d-flex flex-column flex-md-row justify-content-between">
+                            <a class="nav-link text-info" href="/home">Associa'Lyon</a>
+                            <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
+                            <a class="nav-link text-info" href="/map">Près de chez vous</a>
+                            {% if is_granted('ROLE_USER') %}
+                            <a class="nav-link text-info" href="/userui">Mon Espace</a>
+                            <a class="nav-link text-info" href="/logout">Déconnexion</a>
+                            {% else %}
+                            <a class="nav-link text-info" href="/register">S'enregistrer</a>
+                            <a class="nav-link text-info" href="/login">Connexion</a>
+                            {% endif %}
+                        </div>
+                    </nav>
+                </div> 
+        </nav>
+</header>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <nav class="site-header sticky-top py-1">
-                            <div class="container d-flex flex-column flex-md-row justify-content-between">
-                                <a class="nav-link text-info" href="/home">Associa'Lyon</a>
-                                <a class="nav-link text-info" href="/proposition">Agir, proposer, collaborer...</a>
-                                <a class="nav-link text-info" href="/map">Près de chez vous</a>
-                                {% if is_granted('ROLE_USER') %}
-                                <a class="nav-link text-info" href="/userui">Mon Espace</a>
-                                <a class="nav-link text-info" href="/logout">Déconnexion</a>
-                                {% else %}
-                                <a class="nav-link text-info" href="/register">S'enregistrer</a>
-                                <a class="nav-link text-info" href="/login">Connexion</a>
-                                {% endif %}
-                            </div>
-                        </nav>
-                    </div> 
-            </nav>
-    </header>
-
+<main>
     {% block body %}{% endblock %}
+</main>
 
     <!--FOOTER-->
     <footer class="container-fluid pt-5" id="footer"><hr>
@@ -109,7 +109,5 @@
 
     {% block javascripts %}{% endblock %}
 
-
-</body>
 
 </html>
