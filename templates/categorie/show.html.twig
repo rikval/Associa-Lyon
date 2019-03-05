@@ -6,10 +6,10 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-                <h2>{{ categorie.titre }}</h2><br>
+                <h2><u>{{ categorie.titre }}</u></h2><br>
                 <p class="mb-4">{{ categorie.description }}</p>
                 <a class="btn btn-outline-info" href="{{ path('initiative_new') }}">Ajouter une initiative</a>
-            <table class="table">
+            <table class="table table-striped mt-4">
                 <thead>
                     <tr>
                         <th>Titre</th>
@@ -17,7 +17,7 @@
                         <th>Adresse</th>
                         <th>Ville</th>
                         <th>Siteweb</th>
-                        <th>Phone</th>
+                        <th style="min-width: 140px;">Phone</th>
                         <th>actions</th>
                     </tr>
                 </thead>
@@ -25,14 +25,16 @@
                     {% for initiative in categorie.initiative %}
                     <tr>
                         <td>{{ initiative.titre }}</td>
-                        <td>{{ initiative.description }}</td>
+                        <td>{{ initiative.description|length > 220 ? initiative.description|slice(0,
+                                220) ~ '...' : initiative.description }}</td>
                         <td>{{ initiative.adresse }}</td>
                         <td>{{ initiative.ville }}</td>
-                        <td><a href="{{ initiative.siteweb }}" target="_blank">{{ initiative.siteweb }}</a></td>
-                        <td>{{ initiative.phone }}</td>
+                        <td><a href="{{ initiative.siteweb }}" target="_blank">{{ initiative.siteweb|length > 24 ? initiative.siteweb|slice(0,
+                                24) ~ '...' : initiative.siteweb }}</a></td>
+                        <td>{{ initiative.phone|length > 14 ? initiative.phone|slice(0,
+                                14) ~ '...' : initiative.phone }}</td>
                         <td>
                             <a class="btn btn-outline-info" href="{{ path('initiative_show', {'id': initiative.id}) }}">Voir</a>
-
                         </td>
                     </tr>
                     {% else %}
