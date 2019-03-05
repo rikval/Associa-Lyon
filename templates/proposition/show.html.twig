@@ -22,7 +22,8 @@
         <div class="col-12 col-md-6">   
                 {{ form_start(form) }}
                 {% if is_granted('ROLE_USER') %}
-                {{ form_row(form.message) }}
+                {{ form_row(form.message, { 'attr': { 
+                'style' : 'height: 100px'}} ) }}
                 <button class="btn btn btn-outline-info">{{ button_label|default('Envoyer') }}</button>
                 {% endif %}
                 {{ form_row(form.message, {'attr': {
