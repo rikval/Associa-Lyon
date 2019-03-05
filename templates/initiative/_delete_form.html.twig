@@ -1,6 +1,13 @@
-<form method="post" action="{{ path('initiative_delete', {'id': initiative.id}) }}" onsubmit="return confirm
+<div class="container">
+    <div class="row">
+        <div class="d-none d-md-flex col-6">
+        </div>
+        <div class="d-flex col-12 col-md-6 mt-2">
+            <form method="post" action="{{ path('initiative_delete', {'id': initiative.id}) }}" onsubmit="return confirm
 ('Etes-vous sûr de vouloir supprimer cette initiative?');">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ initiative.id) }}">
-    <button class="btn btn-outline-info ml-4">Supprimer</button>
-</form>
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ initiative.id) }}">
+                <button class="btn btn-outline-info">Supprimer</button>
+            </form>
+        </div>
+    </div>
