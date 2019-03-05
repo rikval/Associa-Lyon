@@ -90,7 +90,7 @@ class InitiativeController extends AbstractController
     public function edit(Request $request, Initiative $initiative): Response
     {
         if ($this->getUser()->getId() !== $initiative->getUser()->getId()) {
-            return new Response('Vous n\êtes pas autorisé à modifer cette initiative');
+            return new Response('Vous n\'êtes pas autorisé à modifer cette initiative');
         }
         $form = $this->createForm(InitiativeType::class, $initiative);
         $form->handleRequest($request);
@@ -120,7 +120,7 @@ class InitiativeController extends AbstractController
     public function delete(Request $request, Initiative $initiative): Response
     {
         if ($this->getUser()->getId() !== $initiative->getUser()->getId()) {
-            return new Response( 'Vous n\êtes pas autorisé à supprimer cette initiative');
+            return new Response( 'Vous n\'êtes pas autorisé à supprimer cette initiative');
         }
 
         if ($this->isCsrfTokenValid('delete'.$initiative->getId(), $request->request->get('_token'))) {

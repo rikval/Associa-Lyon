@@ -14,14 +14,18 @@
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Crée le</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for proposition in propositions %}
             <tr>
-                <td><a href="{{ path('proposition_show', {'id': proposition.id}) }}">{{ proposition.titre }}</a></td>
+                <td>{{ proposition.titre }}</td>
                 <td>{{ proposition.description }}</td>
-                <td>{{ proposition.createdAt ? proposition.createdAt|date('d-m-Y') : '' }}</td>                
+                <td>{{ proposition.createdAt ? proposition.createdAt|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a class="btn btn-outline-info"href="{{ path('proposition_show', {'id': proposition.id}) }}">Voir</a>
+                </td>                
             </tr>            
         {% else %}
             <tr>

@@ -22,5 +22,5 @@
 ###< vscode settings folder###
 
 ###> img settings folder###
-/public/dist/img
+/public/dist/img/*
 ###< img settings folder###
