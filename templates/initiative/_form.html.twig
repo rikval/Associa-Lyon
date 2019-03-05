@@ -13,7 +13,8 @@
     
         {{ form_row(form.titre, {'label': 'Nom de l\'initiative'}) }}
 
-        {{ form_row(form.description) }}
+        {{ form_row(form.description, { 'attr': { 
+        'style' : 'height: 150px'}} ) }}
     <div id="locationField">
         <label for="autocomplete">Votre adresse</label>
         <input class="form-control" id="autocomplete" placeholder="" onFocus="geolocate()" type="text" />        
