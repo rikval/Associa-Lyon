@@ -31,6 +31,8 @@
         {{ form_row(form.img) }}
 
 <button class="btn btn-outline-info">{{ button_label|default('Enregistrer') }}</button>
+<a href="{{app.request.headers.get('referer') }}" class="btn btn-outline-info">Annuler</a>
+
 {{ form_end(form) }}
         </div>
     </div>

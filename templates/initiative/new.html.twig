@@ -7,11 +7,5 @@
     <h2 class="m-4 font-weight-normal text-center">Publier une initiative</h2>>
         
     {{ include('initiative/_form.html.twig') }}
-
-<div class="container">
-    <div class="col-12">   
-        <a href="{{app.request.headers.get('referer') }}" class="btn btn-outline-info mt-2">Annuler</a>
-    </div>
-</div>
-
+ 
 {% endblock %}
