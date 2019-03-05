@@ -26,6 +26,7 @@ class InitiativeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="initiative_index", methods={"GET"})
      */
     public function index(InitiativeRepository $initiativeRepository): Response
@@ -62,7 +63,7 @@ class InitiativeController extends AbstractController
             $entityManager->persist($initiative);
             $entityManager->flush();
 
-            return $this->redirectToRoute('initiative_index');
+            return $this->redirectToRoute('userui');
         }
 
         return $this->render('initiative/new.html.twig', [
@@ -89,7 +90,7 @@ class InitiativeController extends AbstractController
     public function edit(Request $request, Initiative $initiative): Response
     {
         if ($this->getUser()->getId() !== $initiative->getUser()->getId()) {
-            return new Response('pas auth');
+            return new Response('Vous n\êtes pas autorisé à modifer cette initiative');
         }
         $form = $this->createForm(InitiativeType::class, $initiative);
         $form->handleRequest($request);
@@ -101,7 +102,7 @@ class InitiativeController extends AbstractController
             $initiative->setImg($fileName);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('initiative_index', [
+            return $this->redirectToRoute('userui', [
                 'id' => $initiative->getId(),
             ]);
         }
@@ -119,7 +120,7 @@ class InitiativeController extends AbstractController
     public function delete(Request $request, Initiative $initiative): Response
     {
         if ($this->getUser()->getId() !== $initiative->getUser()->getId()) {
-            return new Response('pas auth');
+            return new Response( 'Vous n\êtes pas autorisé à supprimer cette initiative');
         }
 
         if ($this->isCsrfTokenValid('delete'.$initiative->getId(), $request->request->get('_token'))) {
@@ -128,6 +129,6 @@ class InitiativeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('initiative_index');
+        return $this->redirectToRoute('userui');
     }
 }

@@ -20,3 +20,7 @@
 ###> vscode settings folder###
 /.vscode
 ###< vscode settings folder###
+
+###> img settings folder###
+/public/dist/img
+###< img settings folder###
