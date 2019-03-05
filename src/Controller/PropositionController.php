@@ -47,7 +47,7 @@ class PropositionController extends AbstractController
             $entityManager->persist($proposition);
             $entityManager->flush();
 
-            return $this->redirectToRoute('proposition_index');
+            return $this->redirectToRoute('userui');
         }
 
         return $this->render('proposition/new.html.twig', [
@@ -87,7 +87,7 @@ class PropositionController extends AbstractController
     public function edit(Request $request, Proposition $proposition): Response
     {
         if ($this->getUser()->getId() !== $proposition->getUser()->getId()) {
-            return new Response('pas auth');
+            return new Response('Vous n\'êtes pas autorisé à modifer cette proposition');
         }
         $form = $this->createForm(PropositionType::class, $proposition);
         $form->handleRequest($request);
@@ -95,7 +95,7 @@ class PropositionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('proposition_index', [
+            return $this->redirectToRoute('userui', [
                 'id' => $proposition->getId(),
             ]);
         }
@@ -113,7 +113,7 @@ class PropositionController extends AbstractController
     public function delete(Request $request, Proposition $proposition): Response
     {
         if ($this->getUser()->getId() !== $proposition->getUser()->getId()) {
-            return new Response('pas auth');
+            return new Response( 'Vous n\'êtes pas autorisé à supprimer cette proposition');
         }
 
         if ($this->isCsrfTokenValid('delete'.$proposition->getId(), $request->request->get('_token'))) {
@@ -122,6 +122,6 @@ class PropositionController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('proposition_index');
+        return $this->redirectToRoute('userui');
     }
 }

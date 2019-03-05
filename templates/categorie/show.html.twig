@@ -8,13 +8,13 @@
         <div class="col-12">
                 <h2>{{ categorie.titre }}</h2><br>
                 <p class="mb-4">{{ categorie.description }}</p>
+                <a class="btn btn-outline-info" href="{{ path('initiative_new') }}">Ajouter une initiative</a>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Adresse</th>
-                        <th>Zip</th>
                         <th>Ville</th>
                         <th>Siteweb</th>
                         <th>Phone</th>
@@ -27,27 +27,21 @@
                         <td>{{ initiative.titre }}</td>
                         <td>{{ initiative.description }}</td>
                         <td>{{ initiative.adresse }}</td>
-                        <td>{{ initiative.zip }}</td>
                         <td>{{ initiative.ville }}</td>
                         <td><a href="{{ initiative.siteweb }}" target="_blank">{{ initiative.siteweb }}</a></td>
                         <td>{{ initiative.phone }}</td>
                         <td>
                             <a class="btn btn-outline-info" href="{{ path('initiative_show', {'id': initiative.id}) }}">Voir</a>
 
-                            {% if is_granted('ROLE_USER') and initiative.user.id == user.id %}
-                            <a class="btn btn-outline-info"href="{{ path('initiative_edit', {'id': initiative.id}) }}">Modifier</a>
-                            {% endif %}
                         </td>
                     </tr>
                     {% else %}
                     <tr>
-                        <td colspan="11">no records found</td>
+                        <td colspan="11">Aucune donnée dans cette catégorie</td>
                     </tr>
                     {% endfor %}
                 </tbody>
-
-            </table>
-            <a class="btn btn-outline-info" href="{{ path('initiative_new') }}">Créer</a>
+            </table>            
         </div>
     </div>
 </div>
