@@ -19,6 +19,15 @@ class PropositionRepository extends ServiceEntityRepository
         parent::__construct($registry, Proposition::class);
     }
 
+    public function findNb($nb = 10) {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.created_at')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Proposition[] Returns an array of Proposition objects
     //  */

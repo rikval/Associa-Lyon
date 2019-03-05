@@ -21,13 +21,14 @@ class HomeController extends AbstractController
         $this->categorieRepository = $categorieRepository;
     }
     /**
+     * @Route("/")
      * @Route("/home", name="home")
      */
     public function home(): Response
     {
 
         return $this->render('home/home.html.twig', [
-            'propositions' => $this->propositionRepository->findAll(),
+            'propositions' => $this->propositionRepository->findNb(3),
             'categories' => $this->categorieRepository->findAll(),
             'user' => $this->getUser()
         ]);
