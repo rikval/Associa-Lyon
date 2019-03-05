@@ -29,7 +29,7 @@
                         <td>{{ initiative.adresse }}</td>
                         <td>{{ initiative.zip }}</td>
                         <td>{{ initiative.ville }}</td>
-                        <td>{{ initiative.siteweb }}</td>
+                        <td><a href="{{ initiative.siteweb }}" target="_blank">{{ initiative.siteweb }}</a></td>
                         <td>{{ initiative.phone }}</td>
                         <td>
                             <a class="btn btn-outline-info" href="{{ path('initiative_show', {'id': initiative.id}) }}">Voir</a>
