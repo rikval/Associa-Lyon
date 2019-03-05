@@ -20,7 +20,7 @@
                         data-initiative-longitude={{ initiative.longitude }}
                         data-initiative-latitude={{ initiative.latitude }}
                         data-initiative-categorie-id={{ initiative.categorie.id }}
-                        data-initiative-titre={{ initiative.titre }}
+                        data-initiative-titre="{{ initiative.titre }}"
 
                         style="display:none"
                     >
@@ -108,7 +108,7 @@
 
                 L.marker([ el.data('initiative-latitude') , el.data('initiative-longitude')], {
                 icon: icon
-                }).addTo(mymap).bindPopup("data-initiative-titre").on('click', function() { 
+                }).addTo(mymap).bindPopup( el.data('initiative-titre') ).on('click', function() { 
 
 
                     $("div[data-initiative-id]").each(function() {
