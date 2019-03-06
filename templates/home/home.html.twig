@@ -45,7 +45,7 @@
                 
                 <a href="{{ path('categorie_show', {'id': categorie.id}) }}">
                 <div class="card" style="width: 17rem; height: 26rem;">
-                    <img src="../dist/img/categorie/{{ categorie.img }}" class="card-img-top" alt="{{ categorie.titre }}">
+                    <img src="{{ asset( 'dist/img/categorie/') ~  categorie.img }}" class="card-img-top" alt="{{ categorie.titre }}">
                     <div class="card-body" id="amap" style="background-color: #D3C2B5;">
                         <h5 class="card-title mb-4"><strong>{{ categorie.titre }}</strong></h5>
                         <p class="card-text" style="font-size: 0.9em;">{{ categorie.description|length > 160 ?
